@@ -76,3 +76,7 @@ riportatele in un file `.txt` e **caricatelo nella vostra repository**.
 ---
 
 **Buon lavoro!** 💻
+
+---
+
+Utilizzando lo stesso database di ieri, eseguite le query in allegato. Caricate un secondo file nella stessa repo di ieri (db-university) con le query di oggi.
