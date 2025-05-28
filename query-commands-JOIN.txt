@@ -22,11 +22,19 @@ Neuroscienze
 
 3. Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 
+with name:
 	SELECT `courses`.`id` AS "courses_id", `courses`.`name`, `courses`.`description`, `teachers`.`id` AS "teacher_id", `teachers`.`name`, `teachers`.`surname`
 	FROM courses
 	JOIN course_teacher ON courses.id = course_teacher.course_id
 	JOIN teachers ON course_teacher.teacher_id = teachers.id
 	WHERE teachers.name ='Fulvio' AND teachers.surname= 'Amato';
+
+with id:
+	SELECT `courses`.`id` AS "courses_id", `courses`.`name`, `courses`.`description`, `teachers`.`id` AS "teacher_id", `teachers`.`name`, `teachers`.`surname`
+	FROM `courses`
+	JOIN course_teacher ON courses.id = course_teacher.course_id
+	JOIN teachers ON course_teacher.teacher_id = teachers.id
+	WHERE `teachers`.`id` = 44
 
 ---
 
@@ -70,6 +78,11 @@ J	OIN degrees ON courses.degree_id = degrees.id
 per ogni esame, stampando anche il voto massimo. Successivamente,
 filtrare i tentativi con voto minimo 18.
 
-
+	SELECT `exam_student`.`student_id`, `exam_student`.`exam_id`,
+    COUNT(*) AS "NumAttempts",
+    MAX(`exam_student`.`vote`) AS "MaxGrade"
+	FROM `exam_student`
+	WHERE `exam_student`.`vote` >= 18
+	GROUP BY `exam_student`.`student_id`, `exam_student`.`exam_id`;
 
 ---
